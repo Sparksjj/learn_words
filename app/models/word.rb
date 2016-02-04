@@ -1,3 +1,4 @@
 class Word < ActiveRecord::Base
-	belonge_to :user, dependent: :destroy
+	belongs_to :user
+	default_scope -> { order('created_at DESC') }
 end
