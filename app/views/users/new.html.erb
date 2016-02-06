@@ -1,0 +1,11 @@
+<%provide(:title, 'sign up')%>
+<h1 class="center">Create new profile</h1>
+<div class="col-md-5 col-md-offset-4">
+	<%=render 'shared/error_meseges'%>
+	<%=form_for(@user) do |f|%>
+  		<%=render 'users/user_form', f: f%>	
+  		<div class="center">
+			<%=f.submit "Create acaunt", class: 'btn btn-primary btn-lg'%> or <%= link_to 'sign in', '#'%>
+		</div>
+	<%end%>	
+</div>

@@ -5,5 +5,16 @@
 @import "bootstrap";
 
 .footer{
-	margin: 0 auto;
+	margin-top: 3em;
+	text-align: right;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+body{
+	background-image: image_url('wild_flowers.png');
 }

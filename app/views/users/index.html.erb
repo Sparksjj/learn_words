@@ -1,0 +1,6 @@
+<%provide(:title, "All users")%>
+
+<%@users.each do |user|%>
+	<%=user.name%>
+	<%=user.email%></br>
+<%end%>
