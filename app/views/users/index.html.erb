@@ -1,6 +1,13 @@
 <%provide(:title, "All users")%>
 
 <%@users.each do |user|%>
-	<%=user.name%>
-	<%=user.email%></br>
+		<div class="container"><div class="col-md-6">
+			<%=user.name%>
+			<%=user.email%>
+		</div>
+
+		<%=link_to 'Show', user,class: 'btn btn-primary'%>
+		<%=link_to 'Destroy', user,method: :delete, data: {confirm: "Are youshure?"}, class: 'btn btn-danger'%>
+		<div class="col-md-6"></div>
+		</div><br/>
 <%end%>
