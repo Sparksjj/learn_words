@@ -5,9 +5,10 @@
 			<%=user.name%>
 			<%=user.email%>
 		</div>
-
+		<div class="btn-group" role="group" aria-label="..."></div>
 		<%=link_to 'Show', user,class: 'btn btn-primary'%>
 		<%=link_to 'Destroy', user,method: :delete, data: {confirm: "Are youshure?"}, class: 'btn btn-danger'%>
+		</div>
 		<div class="col-md-6"></div>
 		</div><br/>
 <%end%>
