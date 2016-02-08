@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :nead_login, only: [:update, :destroy]
+  before_action :nead_login, only: [:update, :destroy, :index, :show]
 
   def index
   	@users=User.all
