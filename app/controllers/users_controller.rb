@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def nead_login
     unless signed_in?
-      flash[:warning]= "You mast sign in first."   #{link_to 'Sign in', new_sessions_path} or #{link_to 'Sign up', new_users_path}
+      flash[:warning]= "You mast login or sign up first."  #{link_to 'Sign up', new_users_path} 
       redirect_to new_session_path
     end
   end
