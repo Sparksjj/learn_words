@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :nead_login, only: [:update, :destroy]
+
   def index
   	@users=User.all
   end
@@ -22,6 +24,10 @@ class UsersController < ApplicationController
   	end
   end
 
+  def update
+    
+  end
+
   def destroy
   	@user=User.find(params[:id])
   	@user.destroy
@@ -33,5 +39,14 @@ class UsersController < ApplicationController
 
   def user_params
   	params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  private
+
+  def nead_login
+    if signed_in?
+      flash[:waring]= "You mast #{link_to 'Sign in', new_sessions_path} or #{link_to 'Sign up', new_users_path} first."
+      redirect_to new_sessions_path
+    end
   end
 end
