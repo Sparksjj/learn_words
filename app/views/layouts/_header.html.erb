@@ -25,7 +25,7 @@
                <li><%=link_to 'Edit profile', '#'%></li>
                <li><%=link_to 'Review words', '#'%></li>
                <li role="separator" class="divider"></li>
-               <li><%=link_to'Sign out',controller: "sessions", action: "destroy", method: "delete"%></li>
+               <li><%=link_to'Sign out', signout_path, method: "delete"%></li>
              </ul>
            </li> 
         <%else%>
