@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :words, only: [:create, :destroy, :update]
   resources :sessions, only: [:new, :create, :destroy]
   root 'static_pages#home'
-  math '/signout', to: 'sessions#destroy', via: 'delete'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
