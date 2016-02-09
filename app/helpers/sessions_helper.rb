@@ -31,7 +31,7 @@ module SessionsHelper
 		current_user==user 		
  	end 
 
- 	def redirect_mack_or(default)
+ 	def redirect_back_or(default)
  		redirect_to(session[:return_to] || default)
  		session[:return_to]
  	end
@@ -39,4 +39,11 @@ module SessionsHelper
  	def store_location
  		session[:return_to]=request.url if request.get?
  	end
+
+ 	def only_not_login
+    	if signed_in?
+    	  flash[:warning] = "Yor mast #{view_context.link_to('sign out', signout_path, method: 'delete')} first"
+    	  redirect_to :back
+    	end
+  	end
 end

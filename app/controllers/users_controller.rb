@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
   	@user=User.find(params[:id])
+
   end
 
   def new
@@ -25,9 +26,17 @@ class UsersController < ApplicationController
   		render 'new'
   	end
   end
-
+  def edit
+    @user=User.find(params[:id])
+  end
   def update
-    
+    @user=User.find(params[:id])
+    if @user.update_atributes(user_params)
+      flash[:success]='Chenge is saved'
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -63,13 +72,6 @@ class UsersController < ApplicationController
   def only_admin
     unless current_user.admin?
       flash[:error]="Thory bat only admins can do it"
-      redirect_to :back
-    end
-  end
-
-  def only_not_login
-    if signed_in?
-      flash[:warning] = "Yor mast #{view_context.link_to('sign out', signout_path, method: 'delete')} first"
       redirect_to :back
     end
   end
