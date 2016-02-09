@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
   	@user=User.find(params[:id])
-
+    @words=@user.words
   end
 
   def new
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
 
   def correct_user
     unless correct_user?
-      flash[:error]="Thory bat only admins can do it"
+      flash[:error]="Sorry bat only admins can do it"
       redirect_to root_pats
     end
   end
