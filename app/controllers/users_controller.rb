@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :nead_login,        only:      [:update, :destroy]
   before_action :correct_user,      only:      [:update]
   before_action :only_admin,        only:      [:destroy]
-  before_action :onli_not_login,    only:      [:new, :create]
+  before_action :only_not_login,    only:      [:new, :create]
   def index
   	@users=User.all
   end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
   def update
     @user=User.find(params[:id])
-    if @user.update_atributes(user_params)
+    if @user.update_attributes(user_params)
       flash[:success]='Chenge is saved'
       redirect_to @user
     else

@@ -9,7 +9,7 @@
 
 <div class="jumbotron">
 	<h3>You have <%=pluralize(@words.count, 'word')%></h3>
-	<%=@words.each do |word|%>
+	<%@words.each do |word|%>
 	<p>word</p>
 	<%end%>
 </div>
