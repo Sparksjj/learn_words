@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :nead_login, only: [:update, :destroy, :index, :show]
-
+  before_action :nead_login,        only:      [:update, :destroy]
+  before_action :correct_user,      only:      [:update]
+  before_action :only_admin,        only:      [:destroy]
+  before_action :onli_not_login,    only:      [:new, :create]
   def index
   	@users=User.all
   end
@@ -45,8 +47,30 @@ class UsersController < ApplicationController
 
   def nead_login
     unless signed_in?
-      flash[:warning]= "You mast login or sign up first."  #{link_to 'Sign up', new_users_path} 
+      store_location
+      flash[:warning]= "You mast login or #{view_context.link_to( 'sign up', new_users_path)} first."  #{link_to 'Sign up', new_users_path} 
       redirect_to new_session_path
+    end
+  end
+
+  def correct_user
+    unless correct_user?
+      flash[:error]="Thory bat only admins can do it"
+      redirect_to root_pats
+    end
+  end
+
+  def only_admin
+    unless current_user.admin?
+      flash[:error]="Thory bat only admins can do it"
+      redirect_to :back
+    end
+  end
+
+  def only_not_login
+    if signed_in?
+      flash[:warning] = "Yor mast #{view_context.link_to('sign out', signout_path, method: 'delete')} first"
+      redirect_to :back
     end
   end
 end
