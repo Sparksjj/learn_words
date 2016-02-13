@@ -57,7 +57,7 @@ class UsersController < ApplicationController
   def nead_login
     unless signed_in?
       store_location
-      flash[:warning]= %Q[Warning, you mast login first]  #{link_to 'Sign up', new_users_path} 
+      flash[:warning]= "You mast login or #{view_context.link_to('Sign up', new_user_path)}".html_safe
       redirect_to new_session_path
     end
   end
