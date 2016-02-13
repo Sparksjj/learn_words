@@ -24,7 +24,22 @@
     </div>
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-        
+                <div class='center'><%= will_paginate @old_words %></div>
+
+	<table class="table table-striped ">
+		<tr>
+			<th>Words</th>
+			<th>Translate</th>
+		</tr>
+		<%@old_words.each do |word|%>
+		<tr>
+  			<td><%=word.foreign_words%></td>
+  			<td><%=word.translation%></td>
+		</tr>
+		<%end%>
+	</table>
+	<div class='center'><%= will_paginate @old_words %></div>
+      </div>
       </div>
     </div>
   </div>

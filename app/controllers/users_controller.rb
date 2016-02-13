@@ -8,8 +8,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    time=Time.now.ago(172800)
   	@user=User.find(params[:id])
     @words=@user.words.paginate(page: params[:page], per_page: "15")
+    @old_words=@user.words.where(updated_at: (Time.now.midnight - 2.day)..Time.now.midnight).paginate(page: params[:page], per_page: "15")
+    
   end
 
   def new
@@ -57,7 +60,7 @@ class UsersController < ApplicationController
   def nead_login
     unless signed_in?
       store_location
-      flash[:warning]= "You mast login or #{view_context.link_to('Sign up', new_user_path)}".html_safe
+      flash[:warning]= "You mast login or #{view_context.link_to('Sign up', new_user_path)}"
       redirect_to new_session_path
     end
   end

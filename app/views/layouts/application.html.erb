@@ -13,7 +13,7 @@
 	<div class="container">
 		<div class="row">
 
-			<%=flash_messages%>
+			<%=render 'shared/flash_meseges', collection: flash%>
 
 			<%= yield %>					
 		</div>
