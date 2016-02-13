@@ -16,6 +16,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
+      <li><%=link_to "See all users", users_path%></li>
         <%if signed_in? %>
            <li><%=link_to "Hi #{current_user.name}", current_user%></li>
            <li class="dropdown">

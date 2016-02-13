@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
-  before_action :nead_login,        only:      [:update, :destroy]
+  before_action :nead_login,        only:      [:update, :destroy, :edit]
   before_action :correct_user,      only:      [:update, :edit]
   before_action :only_admin,        only:      [:destroy]
   before_action :only_not_login,    only:      [:new, :create]
   def index
-  	@users=User.all
+  	@users=User.paginate(page: params[:page], per_page: "15")
   end
 
   def show
   	@user=User.find(params[:id])
-    @words=@user.words
+    @words=@user.words.paginate(page: params[:page], per_page: "15")
   end
 
   def new
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-  	params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  	params.require(:user).permit(:name, :email, :password, :password_confirmation, :count_words)
   end
 
   private
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
   def nead_login
     unless signed_in?
       store_location
-      flash[:warning]= "You mast login or #{view_context.link_to( 'sign up', new_user_path)} first."  #{link_to 'Sign up', new_users_path} 
+      flash[:warning]= %Q[Warning, you mast login first]  #{link_to 'Sign up', new_users_path} 
       redirect_to new_session_path
     end
   end

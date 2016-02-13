@@ -1,16 +1,20 @@
-	<div class="form-group">
+	<div class="form-group on_black">
 		<%=f.label :name%>
 		<%=f.text_field :name,class: 'form-control'%>
 	</div>
-	<div class="form-group">
+	<div class="form-group on_black">
 		<%=f.label :email%>
 		<%=f.text_field :email, class: 'form-control'%>
 	</div>
-	<div class="form-group">
+	<div class="form-group on_black">
+		<%=f.label :How_many_words_you_want_learn%>
+		<%=f.number_field :count_words, class: 'form-control'%>
+	</div>
+	<div class="form-group on_black">
 		<%=f.label :password%>
 		<%=f.password_field :password,class: 'form-control'%>
 	</div>
-	<div class="form-group">
+	<div class="form-group on_black">
 		<%=f.label :password_confirmation, 'Confirm_password'%>
 		<%=f.password_field :password_confirmation,class: 'form-control'%>
 	</div>

@@ -1,13 +1,15 @@
 <%provide(:title, "All users")%>
-
+<div class='center'><%= will_paginate @users %>
 <%@users.each do |user|%>
 		<div class="container">
-		<div class="col-md-6">
+		<div class="col-md-6 on_black">
 			<%=user.name%>
 			<%=user.email%>
 		</div>
-		<div class="btn-group" role="group" aria-label="..."></div>
+		<div class="btn-group" role="group" aria-label="...">
 		<%=link_to 'Show', user,class: 'btn btn-primary'%>
-		<%=link_to 'Destroy', user,method: :delete, data: {confirm: "Are youshure?"}, class: 'btn btn-danger'%>
+		<%=link_to 'Destroy', user,method: :delete, data: {confirm: "Are youshure?"}, class: 'btn btn-danger'%></div>
 		</div>
+		</br>
 <%end%>
+<%= will_paginate @users %></div>

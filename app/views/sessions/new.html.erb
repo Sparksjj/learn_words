@@ -1,7 +1,8 @@
 <%provide(:title, 'sign in')%>
 
-<h1 class="center">Create new profile</h1>
+
 <div class="col-md-5 col-md-offset-4">
+<h1 class="center">Enter you email and password</h1>
 	<%=form_for(:session, url: sessions_path ) do |f|%>
   		<div class="form-group">
 			<%=f.label :email%>

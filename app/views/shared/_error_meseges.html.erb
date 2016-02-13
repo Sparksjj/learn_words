@@ -1,5 +1,5 @@
 <%if @user.errors.any?%>
-	<div class="center">You have <%=pluralize(@user.errors.count, "error")%></div>
+	<div class="center error_messeges">You have <%=pluralize(@user.errors.count, "error")%></div>
 	<%@user.errors.full_messages.each do |mes|%>
 		<ul class='error_messeges'>
 			<fotter><small><%=mes%></small></fotter>
