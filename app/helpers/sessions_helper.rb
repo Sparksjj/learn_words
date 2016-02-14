@@ -46,4 +46,20 @@ module SessionsHelper
     	  redirect_to :back
     	end
   	end
+
+  	def nead_login
+  	  unless signed_in?
+  	    store_location
+  	    flash[:warning]= "You mast login or #{view_context.link_to('Sign up', new_user_path)}"
+  	    redirect_to new_session_path
+  	  end
+  	end
+  	
+
+ 	def correct_user
+ 	  unless correct_user?
+ 	    flash[:warning]="Maby this page?"
+ 	    redirect_to edit_user_path(current_user)
+ 	  end
+ 	end
 end

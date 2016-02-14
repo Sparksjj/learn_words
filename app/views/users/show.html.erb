@@ -1,77 +1,21 @@
 <%provide(:title, "#{@user.name}")%>
-
-<div class="col-md-4 on_black">
+<div class="jumbotron diamond_white col-md-12">
+<div class="col-md-4">
 	<h3><%=@user.name%><h3>
 	<p><%=@user.email%></p>
 	<p><%=@user.count_words%></p>
-	<%=link_to 'All users', users_path%>
+	<%=link_to 'repeat words', 'repeat_path'%>
 </div>
 
-
+<br/>
 <div class="col-md-7 col-md-offset-1">
 
-<div class="jumbotron diamond_white">
-
-<h3>You have <%=pluralize(@words.count, 'word')%></h3>
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">        
-			Word on repetition
-        </a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-                <div class='center'><%= will_paginate @old_words %></div>
-
-	<table class="table table-striped ">
-		<tr>
-			<th>Words</th>
-			<th>Translate</th>
-		</tr>
-		<%@old_words.each do |word|%>
-		<tr>
-  			<td><%=word.foreign_words%></td>
-  			<td><%=word.translation%></td>
-		</tr>
-		<%end%>
-	</table>
-	<div class='center'><%= will_paginate @old_words %></div>
-      </div>
-      </div>
-    </div>
+<h4>Progress (<%=@count_words%><%=have_count_words(@user)%>)</h4>
+<div class="progress">
+  <div class="progress-bar progress-bar-success" style="width: <%=@bar[0]%>%">
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingTwo">
-      <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          See all words
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="panel-body">
-        <div class='center'><%= will_paginate @words %></div>
-
-	<table class="table table-striped ">
-		<tr>
-			<th>Words</th>
-			<th>Translate</th>
-		</tr>
-		<%@words.each do |word|%>
-		<tr>
-  			<td><%=word.foreign_words%></td>
-  			<td><%=word.translation%></td>
-		</tr>
-		<%end%>
-	</table>
-	<div class='center'><%= will_paginate @words %></div>
-      </div>
-    </div>
+  <div class="progress-bar progress-bar-warning" style="width: <%=@bar[1]%>%">
   </div>
 </div>
-
-
+  </div>
 </div>
