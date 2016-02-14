@@ -1,0 +1,8 @@
+<%flash.each do |key, msg|%>
+<div class="alert alert-<%=key.to_s%> fade in">
+	<%=msg.html_safe%>
+	<div class="close" data-dismiss='alert'>
+		x
+	</div>	
+</div>
+<%end%>
