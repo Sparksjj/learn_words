@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
   	@user=User.find(params[:id])
+    @word=@user.words.build
     @count_words=@user.words.count
     @count_old_words=@user.words.where.not(created_at: (Time.now - 2.day)..Time.now).paginate(page: params[:page], per_page: "15").count
     @bar=for_progress_bar(@count_old_words, @count_words, @user.count_words)
@@ -21,8 +22,6 @@ class UsersController < ApplicationController
   def create
   	@user=User.new(user_params)
   	if @user.save
-  		 
-       (@user)
   		flash[:success]="Welcome a board, #{@user.name}!"
   		redirect_to @user
   	else

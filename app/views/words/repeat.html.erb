@@ -1,0 +1,8 @@
+<div class="jumbotron diamond_white col-md-12">
+<%= will_paginate @old_words %>
+<%@old_words.each do |f|%>
+  <p><%=f.foreign_words%>   <%=f.translation%>
+</p>
+<%end%>
+<%= will_paginate @old_words %>
+</div>

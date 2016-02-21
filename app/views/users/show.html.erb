@@ -1,21 +1,28 @@
 <%provide(:title, "#{@user.name}")%>
 <div class="jumbotron diamond_white col-md-12">
-<div class="col-md-4">
-	<h3><%=@user.name%><h3>
-	<p><%=@user.email%></p>
-	<p><%=@user.count_words%></p>
-	<%=link_to 'repeat words', 'repeat_path'%>
-</div>
+  <div class="col-md-4">
+  	<h3><%=@user.name%></h3>
+  	<p><%=@user.email%></p>
+  	<p><%=@user.count_words%></p>
+  	<%=render "words/word_form"%>
+  </div>
 
-<br/>
-<div class="col-md-7 col-md-offset-1">
-
-<h4>Progress (<%=@count_words%><%=have_count_words(@user)%>)</h4>
-<div class="progress">
-  <div class="progress-bar progress-bar-success" style="width: <%=@bar[0]%>%">
-  </div>
-  <div class="progress-bar progress-bar-warning" style="width: <%=@bar[1]%>%">
-  </div>
-</div>
-  </div>
+  <%if count_words_nil?(@count_words)%>
+  <%else%>
+    <br/>
+    <div class="col-md-7 col-md-offset-1">
+      <h4>Progress (<%=@count_words%><%=have_count_words(@user)%>)</h4>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" style="width: <%=@bar[0]%>%">
+        </div>
+        <div class="progress-bar progress-bar-warning" style="width: <%=@bar[1]%>%">
+        </div>
+      </div>
+       <%if @count_old_words!=0%>
+          <h4>You have <%=link_to "#{@count_old_words} words on repeat.", repeat_user_words_path(@user)%> or <%=link_to 'See all words', user_words_path(@user)%></h4>
+          <%else%>
+          <h4>You haven't words on repeat. <%=link_to 'See all words', user_words_path(@user)%></h4>
+          <%end%>
+    </div>
+  <%end%>
 </div>

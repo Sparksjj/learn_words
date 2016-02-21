@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :words
+  resources :users do
+    resources :words do
+      get 'repeat', on: :collection
+      #match 'repeat', to: 'user/words#repeat', via: 'get'
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   root 'static_pages#home'
   match '/signout', to: 'sessions#destroy', via: 'delete'
-  match '/repeat', to: 'words#repeat', via: 'get'
-
+  match '/test', to: 'static_pages#test_wiews', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
