@@ -1,0 +1,12 @@
+<h4>Progress (<%=@count_words%><%=have_count_words(@user)%>)</h4>
+<div class="progress">
+  <div class="progress-bar progress-bar-success" style="width: <%=@bar[0]%>%">
+  </div>
+  <div class="progress-bar progress-bar-warning" style="width: <%=@bar[1]%>%">
+  </div>
+</div>
+<%if @count_old_words!=0%>
+    <h4>You have <%=link_to "#{@count_old_words} words on repeat.", repeat_user_words_path(@user)%> or <%=link_to 'See all words',user_words_path(@user)%></h4>
+    <%else%>
+    <h4>You haven't words on repeat. <%=link_to 'See all words', user_words_path(@user)%></h4>
+<%end%>
