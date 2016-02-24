@@ -14,14 +14,14 @@ module WordHelper
 	  #if count_words > desired_count
 	  ##	return [100, 0]
 	  #else  
-		if count_words.to_i==0
+		if count_words==0
 			return [0, 0]
 		else
-			if old_words.to_i==0
+			if old_words==0 && !desired_count==0
 				green=(count_words*100)/desired_count
 				return [green, 0]
 			else	
-				if desired_count.to_i==0
+				if desired_count==0
 					yelow=(old_words*100)/count_words
 					green=100-yelow
 					return [green, yelow]

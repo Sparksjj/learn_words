@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @word=@user.words.build
     @count_words=@user.words.count
     @count_old_words=@user.words.where.not(created_at: (Time.now - 2.day)..Time.now).paginate(page: params[:page], per_page: "15").count
-    @bar=for_progress_bar(@count_old_words, @count_words, @user.count_words)
+    @bar=for_progress_bar(@count_old_words.to_i, @count_words.to_i, @user.count_words.to_i)
   end
 
   def new
