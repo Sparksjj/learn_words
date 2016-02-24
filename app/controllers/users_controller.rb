@@ -58,7 +58,7 @@ class UsersController < ApplicationController
 
   def only_admin
     unless current_user.admin? && signed_in?
-      flash[:errore]="Sorry bat only admins can do it"
+      flash[:danger]="Sorry bat only admins can do it"
       redirect_to :back
     end
   end
